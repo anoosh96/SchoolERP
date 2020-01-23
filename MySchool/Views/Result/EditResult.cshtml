@@ -1,0 +1,373 @@
+﻿@model MySchool.Models.Result
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditResult</title>
+    <link rel="stylesheet" href="~/Content/navbar.css" type="text/css" />
+    <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+        function myFunction(id) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+  document.getElementById("myDropdown"+id).classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+    </script>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #00004d;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            text-align: left-center;
+            font-size: 32px;
+            color: white;
+        }
+
+        /* Container for flexboxes */
+        section {
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        input[type=text], select {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+
+        /* Style the content */
+        article {
+            -webkit-flex: 3;
+            -ms-flex: 3;
+            flex: 3;
+            background-color: #ffff99;
+            padding-bottom: 800px;
+            margin-left: -100px;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+
+
+        img {
+            float: left;
+            margin-top: -1px;
+        }
+
+        .box {
+            width: auto;
+            height: auto;
+            margin: 100px;
+            padding: 100px;
+            background-color: #00004d;
+            color: white;
+            display: inline-block;
+            border-radius: 5px;
+        }
+
+        .box2 {
+            width: 450px;
+            height: 300px;
+            margin: 19px 17px;
+            background: white;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .box3 {
+            width: 450px;
+            height: 300px;
+            margin: 19px 17px;
+            background: white;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+
+
+
+        .button#b1 {
+            background-color: #4CAF50;
+            border-radius: 2px;
+            color: white;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 40px 2px;
+            cursor: pointer;
+            width: 10%;
+            float: right;
+        }
+
+        .cnt {
+            border-radius: 20px;
+            background-color: white;
+            padding: 20%;
+            margin: 20px 30px 20px 30px;
+            position:;
+        }
+
+
+
+        .container {
+            margin: 50px 100px 100px 100px;
+            width: 10px;
+            border-radius: 5px;
+            background-color: gray;
+            padding: 10%;
+            padding-right: 50%;
+            text-align: left;
+        }
+
+
+        .imagelink {
+            background: url(../../Content/images/new.jpg) no-repeat top left;
+            border-radius: 0px;
+            width: 203px;
+            height: 124px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 165%;
+            margin-left: -30%;
+            margin-top: -25%;
+            margin-bottom: 10px;
+        }
+
+        .panel-heading {
+            font-size: 20px;
+            background-color: orangered;
+            color: white;
+            padding: 10px 15px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+
+
+
+
+</head>
+<body>
+
+    <header>
+        <a href='@Url.Action("TeacherHome","User")'><img src="~/Content/images/new logo 5.jpg" style="border-radius:5px; width:203px;height:124px;"></a>
+        <b style="position:absolute;right:35px;top:20px;font-size:20px;">Teacher</b>
+
+        <a href='@Url.Action("Login","User")' class="button" id="b1">Logout</a>
+        <h4 style="text-align:left; margin-left: 300px;"> <b>Welcome To FGS</b> Management System</h4>
+    </header>
+    <section>
+        <nav>
+            <ul>
+
+
+
+
+
+
+
+
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('5')" class="dropbtn">
+                            Announcements &#9660
+                        </button>
+                        <div id="myDropdown5" class="dropdown-content">
+                            @Html.ActionLink("Add Announcement", "AddAnnouncement", "Communication")
+                            @Html.ActionLink("View General Announcements", "ViewGeneralAnnouncements", "Communication")
+                        </div>
+
+                    </div>
+
+
+
+                    <hr />
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('8')" class="dropbtn">Result &#9660</button>
+                        <div id="myDropdown8" class="dropdown-content">
+                            @Html.ActionLink("View Result", "ViewResultTeacher", "Result")
+                            @Html.ActionLink("Add Result", "AddResult", "Result")
+
+                        </div>
+
+                    </div>
+
+
+
+                    <hr />
+                </li>
+
+
+                <li>
+
+                    <div class="dropdown">
+                        <button onclick="myFunction('6')" class="dropbtn">Time Table &#9660</button>
+                        <div id="myDropdown6" class="dropdown-content">
+
+                            @Html.ActionLink("View Schedule", "ViewScheduleTeacher", "Schedule")
+                        </div>
+
+                    </div>
+                    <hr />
+                </li>
+
+
+
+
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('7')" class="dropbtn">Attendance &#9660</button>
+                        <div id="myDropdown7" class="dropdown-content">
+                            @Html.ActionLink("View Attendance", "ViewAttendanceTeacher", "Attendance")
+                            @Html.ActionLink("Mark Attendance", "MarkAttendance", "Attendance")
+                        </div>
+
+                    </div>
+                    <hr />
+                </li>
+            </ul>
+
+        </nav>
+
+        <article>
+
+        <div class="panel-heading">
+            <b>Edit Student</b>
+        </div>
+        <div class="frm">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Student</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ResultId)
+                    @Html.HiddenFor(model => model.Class)
+                    @Html.HiddenFor(model => model.Student)
+                    @Html.HiddenFor(model => model.Type)
+                    @Html.HiddenFor(model => model.Subject)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TotalMarks, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TotalMarks, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TotalMarks, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MarksObtained, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MarksObtained, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MarksObtained, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "ViewResultTeacher")
+        </div>
+
+
+
+
+
+        </article>
+    </section>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
+</body>
+
+
+
+
+</html>

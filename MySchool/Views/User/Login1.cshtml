@@ -1,0 +1,64 @@
+﻿@model MySchool.Models.User
+
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Snippet: Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="~/Content/style.css">
+    <style>
+         body {
+            background: url("../../Content/images/gradient.jpg") no-repeat;
+        }
+
+
+          img1 {
+            position: relative;
+        }
+
+        header {
+            background-color: transparent;
+            padding: 20px;
+            padding-bottom: 1px;
+            text-align: center;
+            font-size: 26px;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="font-family:Garamond;margin-top:-20px; margin-bottom:30px;">A Project Of Siddiqui Educational Society (SES)</h1>
+        <div>
+            <img src="~/Content/images/kids planet.jpeg" style="width:280px;height:160px; margin-left:328px; float: center; border-radius:5px">
+            <img src="~/Content/images/sidd.jpg" style="width:280px;height:160px; margin-left:-650px; margin-right:30px; border-radius:5px">
+            <img src="~/Content/images/new logo 5.jpg" style="width:280px;height:160px; border-radius:5px; margin-left: 430px;">
+        </div>
+    </header>
+    <div class="wrapper">
+        @using (Html.BeginForm("Login1", "User", null,FormMethod.Post, new {@class="form-signin"}))
+
+        {
+            <h2 class="form-signin-heading">Please login</h2>
+            <input type="text" class="form-control" name="UserID" placeholder="Email Address" required="" autofocus="" />
+            <input type="password" class="form-control" name="UserPassword" placeholder="Password" required="" />
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            <span style="color:red;font-size:small;">@ViewBag.Message</span>
+        }
+    </div>
+
+
+</body>
+</html>

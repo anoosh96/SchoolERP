@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Admin-AddStudent</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #00004d;
+  padding-top: 1px;
+  padding-bottom:1px;
+  text-align: lecenter;
+    
+  font-size: 32px;
+  color: white;
+}
+
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Style the navigation menu */
+nav {
+	max-width:auto;
+	max-width: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #00004d;
+  padding: 15px;
+  padding-left: 1px;
+  margin-left: px;
+  margin-right: -90px;
+  padding-bottom: 150px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  
+  
+}
+
+li{
+	border-bottom: 1px solid #555;
+	
+}
+
+li a {
+  display: block;
+  color: white;
+  padding: 10px 2px 20px 10px;
+  text-decoration: none;
+  margin-left:1px
+  
+}
+li a:hover {
+  background-color: #555;
+  color: white;
+  border-bottom: 1px solid #555;
+}
+ul1{
+	display: none;
+}
+
+
+
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #ffff99;
+  padding-bottom: 800px;
+  margin-left:-100px;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+.container {
+	margin: 50px 100px 100px 100px;
+	width:10px;
+  border-radius: 5px;
+  background-color: gray;
+  padding: 10%;
+  padding-right:50%;
+  text-align: left;
+}
+
+input[type=text], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin-top: 15px;
+  margin-left:15px;
+  margin-right:20px;
+  margin-bottom:10px;
+  
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=date], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin-top: 15px;
+  margin-left:15px;
+  margin-right:20px;
+  margin-bottom:10px;
+  
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 10%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 20px;
+  background-color: white;
+  padding: 50px;
+  margin: 20px 30px 20px 30px;
+  }
+
+
+
+img{
+	max-width: 20%;
+	height: auto;
+	float: left;
+	margin-top: 20px;
+}
+
+.box {
+width:300px;
+height: 100px;
+margin: 19px 17px;
+background: white;
+display: inline-block;
+}
+
+.dropdown{
+	display: none;
+}
+
+li:hover .dropdown{
+	display: block;
+}
+
+.button#b1 {
+  background-color: #4CAF50;
+  border-radius: 2px;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 25px 2px ;
+  cursor: pointer;
+  width:10%;
+  float:right;
+	
+}
+
+input[type=text]#search {
+  float:right;
+  margin-top:-50px;
+  margin-right:1px;
+  width: 135px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 5px 10px 5px 10px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus#search {
+  width: 20%;
+}
+
+</style>
+</head>
+<body>
+
+	
+
+<header>
+	<a href="admin.html"><img src="new logo 5.jpg" style="border-radius:0px; width:203px;height:124px; margin-top:-1px;"></a>
+<a href="login123.html" class="button" id="b1">Logout</a>
+ <h4 style="text-align:left; margin-left: 300px;"> <b>Welcome To FGS</b> Management System</h4>	
+ <input type="text" id="search" name="search" placeholder="Search..">
+</header>
+
+<section> 
+  <nav>
+    <ul>
+      <li><a href="admin.html"><b>Students</b></a>
+		
+		<ul class="dropdown">
+		
+			<li><a href = "Admin-AddStudent.html"> Add Student </a> </li>
+			<li><a href = "Admin-AllStudent.html"> All Students </a> </li>
+			<li><a href = "#"> Student Details </a> </li>
+		</ul>
+		</li>
+		
+      <li><a href="#"><b>Teachers</b></a></li>
+      <li><a href="#"><b>Accounts</b></a></li>
+	  <li><a href="#"><b>Class</b></a></li>
+	  <li><a href="#"><b>Subject</b></a></li>
+	  <li><a href="#"><b>Time Table</b></a></li>
+	  <li><a href="Attendance.html"><b>Attendance</b></a>
+		<ul class="dropdown">
+		
+			<li><a href = "MarkAttendance.html"> Mark Attendance </a> </li>
+			<li><a href = ""> Check Attendance </a> </li>
+			
+		</ul>
+	  
+	  </li>
+    </ul>
+  </nav>
+  
+  <article>
+		<div>
+  <form action="">
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname" style="margin-left:15px;">Last Name:</label> 
+    <input type="text" id="lname" name="lastname" placeholder="Your last name.." style="margin-left:5px;">
+	<br>
+	
+	
+	<label for="fclass">Class:</label>
+    <select id="class" name="classname" style="margin-left:54px;">
+      <option value="one">1</option>
+      <option value="two">2</option>
+      <option value="three">3</option>
+	  <option value="four">4</option>
+      <option value="five">5</option>
+      <option value="six">6</option>
+	  <option value="seven">7</option>
+      <option value="eight">8</option>
+      <option value="nine">9</option>
+	  <option value="ten">10</option>
+    </select>
+    
+	<label for="fsection" style="margin-left:15px;">Section:</label>
+    <select id="section" name="section" style="margin-left:30px;">
+	
+		<option value="A"> A </option>
+		<option value="B"> B </option>
+	</select>
+	
+	<br>
+	<label for="fgender">Gender:</label>
+    <select id="gender" name="gender_" style="margin-left:42px">
+		<option value="male"> Male </option>
+		<option value="female"> Female </option>
+ 	</select>
+	<br>
+	<label for="fdob">DOB:</label>
+    <input type="date" id="fdob" name="dob" placeholder="dd / mm / yy" style="margin-left:60px;">
+	<br>
+	<h5>Upload student photo</h5>
+	<input type="file" name="myFile" value="Upload Picture">
+  <br>
+    <input type="submit" value="Save">
+  </form>
+</div>
+
+	
+   
+   
+   
+  </article>
+</section>
+
+<footer>
+  <p>Footer</p>
+</footer>
+
+</body>
+</html>

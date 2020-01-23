@@ -1,0 +1,317 @@
+﻿
+@model IEnumerable<MySchool.Models.Announcements>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ViewResultClassAnnouncements</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #00004d;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            text-align: left-center;
+            font-size: 32px;
+            color: white;
+        }
+
+        /* Container for flexboxes */
+        section {
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        /* Style the navigation menu */
+        nav {
+            max-width: auto;
+            max-width: auto;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            background: #00004d;
+            padding: 15px;
+            padding-left: 1px;
+            margin-left: px;
+            margin-right: -90px;
+            padding-bottom: 150px;
+        }
+
+            /* Style the list inside the menu */
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+        li {
+            border-bottom: 1px solid #555;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                padding: 10px 2px 20px 10px;
+                text-decoration: none;
+                margin-left: 1px;
+            }
+
+                li a:hover {
+                    background-color: #555;
+                    color: white;
+                    border-bottom: 1px solid #555;
+                }
+
+        ul1 {
+            display: none;
+        }
+
+
+
+        /* Style the content */
+        article {
+            -webkit-flex: 3;
+            -ms-flex: 3;
+            flex: 3;
+            background-color: #ffff99;
+            padding-bottom: 800px;
+            margin-left: -100px;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+
+
+        img {
+            float: left;
+            margin-top: -1px;
+        }
+
+        .box {
+            width: auto;
+            height: auto;
+            margin: 100px;
+            padding: 100px;
+            background-color: #00004d;
+            color: white;
+            display: inline-block;
+            border-radius: 5px;
+        }
+
+        .box2 {
+            width: 450px;
+            height: 300px;
+            margin: 19px 17px;
+            background: white;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .box3 {
+            width: 450px;
+            height: 300px;
+            margin: 19px 17px;
+            background: white;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+
+        .dropdown {
+            display: none;
+        }
+
+        li:hover .dropdown {
+            display: block;
+        }
+
+        .button#b1 {
+            background-color: #4CAF50;
+            border-radius: 2px;
+            color: white;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 40px 2px;
+            cursor: pointer;
+            width: 10%;
+            float: right;
+        }
+
+        div {
+            border-radius: 20px;
+            background-color: white;
+            padding: 20%;
+            margin: 20px 30px 20px 30px;
+            position:;
+        }
+
+
+
+        .container {
+            margin: 50px 100px 100px 100px;
+            width: 10px;
+            border-radius: 5px;
+            background-color: gray;
+            padding: 10%;
+            padding-right: 50%;
+            text-align: left;
+        }
+
+
+        .imagelink {
+            background: url(../../Content/images/new.jpg) no-repeat top left;
+            border-radius: 0px;
+            width: 203px;
+            height: 124px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 165%;
+            margin-left: -30%;
+            margin-top: -25%;
+            margin-bottom: 10px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <header>
+        <a href='@Url.Action("AdminHome","User")'><img src="~/Content/images/new logo 5.jpg" style="border-radius:5px; width:203px;height:124px;"></a>
+        <b style="position:absolute;right:35px;top:20px;font-size:20px;">Teacher</b>
+
+        <a href='@Url.Action("Login","User")' class="button" id="b1">Logout</a>
+        <h4 style="text-align:left; margin-left: 300px;"> <b>Welcome To FGS</b> Management System</h4>
+    </header>
+    <section>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#"><b>Result</b></a>
+                    <ul class="dropdown">
+                        <li>@Html.ActionLink("Add Result", "AddResult", "Result")</li>
+                        <li>@Html.ActionLink("View Result", "ViewResultTeacher", "Result")</li>
+                    </ul>
+
+                </li>
+
+
+
+
+                <li>
+                    <a href="#"><b>Announcements</b></a>
+                    <ul class="dropdown">
+                        <li>@Html.ActionLink("Add Announcement", "AddAnnouncement", "Communication")</li>
+                        <li>@Html.ActionLink("View Class Announcements", "ViewClassAnnouncements", "Communication")</li>
+                        <li>@Html.ActionLink("View General Announcements", "ViewGeneralAnnouncements", "Communication")</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><b>Time Table</b></a>
+                    <ul class="dropdown">
+
+                        <li>@Html.ActionLink("View Schedule", "ViewScheduleTeacher", "Schedule")</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><b>Attendance</b></a>
+                    <ul class="dropdown">
+                        <li>@Html.ActionLink("View Attendance", "ViewAttendanceTeacher", "Attendance")</li>
+                        <li>@Html.ActionLink("Mark Attendance", "MarkAttendance", "Attendance")</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <article>
+            <div style="overflow-y:scroll; overflow-x: auto;">
+                <table>
+                    <tr>
+                        <th>Topic</th>
+                        <th>Teacher Name</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Message</th>
+                        
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Topic)</td>
+
+                            <td>@Html.DisplayFor(modelItem => item.Teacher.Name)</td>
+
+
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+
+
+                            <td>Class</td>
+
+
+                            
+
+
+                            <td>@Html.DisplayFor(modelItem => item.Message)</td>
+
+
+                        </tr>
+                    }
+
+
+                </table>
+            </div>
+
+
+
+
+
+        </article>
+    </section>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
+</body>
+</html>
+

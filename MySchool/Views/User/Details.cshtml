@@ -1,0 +1,31 @@
+﻿
+
+@model MySchool.Models.Student
+
+<div class="box">
+    
+
+    <button id ="btn" ng-click="close()"  style ="float:right;border-radius:10px;">close</button>
+    <img src="~/Content/images/man.png" style="border-radius:29px; margin-left:10px;margin-right:-1px; margin-top:10px; width:100px; height:100px;" />
+    <br />
+    <h2>Student Details</h2>
+    <br>
+    <h3>First Name: </h3>@Html.DisplayFor(m => m.FirstName)
+    <br />
+    <h3>Last Name: </h3>@Html.DisplayFor(m => m.LastName)
+    <br />
+    <h3>Class: </h3>@Html.DisplayFor(m => m.Class.ClassID)
+    <br />
+    <h3>Section: </h3>@Html.DisplayFor(m => m.Section)
+    <br />
+    <h3>Dob: </h3>@Html.DisplayFor(m => m.Dob)
+    <br />
+    <h3>Gender: </h3>@Html.DisplayFor(m => m.Gender)
+    <br />
+    <h3>Father Id: </h3>@Html.DisplayFor(m => m.Parent.ParentId)
+    <br />
+    <h3>Father Name: </h3>@Html.DisplayFor(m => m.Parent.ParentName)
+    <br />
+    <h3>Father Address: </h3>@Html.DisplayFor(m => m.Parent.Address)
+    <br />
+</div>

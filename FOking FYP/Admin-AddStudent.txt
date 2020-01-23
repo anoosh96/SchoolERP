@@ -1,0 +1,19 @@
+<nav>
+    <ul>
+      <li><a href="#"><b>Students</b></a></li>
+		<div class = "ul1">
+		<ul>
+		
+			<li><a href = "#"> Add Student </a> </li>
+			<li><a href = "#"> All Students </a> </li>
+			<li><a href = "#"> Student Details </a> </li>
+		</ul>
+		</div>
+      <li><a href="#"><b>Teachers</b></a></li>
+      <li><a href="#"><b>Parents</b></a></li>
+    </ul>
+  </nav>
+  
+  
+  
+  

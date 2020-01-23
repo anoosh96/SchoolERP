@@ -1,0 +1,412 @@
+﻿
+
+
+@{
+    Layout = null;
+    MySchool.Models.SchoolContext school = new MySchool.Models.SchoolContext();
+    string tid = Session["username"].ToString();
+
+    var list = from n in school.Attendance.Include("Teacher") where n.Teacher.TeacherID.Equals(tid) select n;
+    var presents = (from n in list where n.AttendanceValue.Equals("p") select n).Count();
+    var absents = (from n in list where n.AttendanceValue.Equals("A") select n).Count();
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="AtdTApp">
+<head>
+    <title>Admin-MarkAttendance</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="~/Scripts/AtdTJS.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="~/Content/navbar.css" type="text/css" />
+
+    <script>
+        $(document).ready(function () {
+            /*var data = JSON.stringify({
+                'id': 't0051'
+            });*/
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("getTeacherClasses","User")',
+                data: {id:'@Session["username"].ToString()'},
+                success: function (list) {
+                    var s = '<option value="">Please Select a Class</option>';
+                    for (var i = 0; i < list.length; i++) {
+                        s += '<option value="' + list[i].ClassID + '">' + list[i].ClassID + '</option>';
+                    }
+                    $('#classid').html(s);
+                }
+            });
+        });
+
+    </script>
+
+
+
+
+    <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+        function myFunction(id) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+  document.getElementById("myDropdown"+id).classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #00004d;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            text-align: left-center;
+            font-size: 32px;
+            color: white;
+        }
+
+        /* Container for flexboxes */
+        section {
+            display: -webkit-flex;
+            display: flex;
+        }
+
+
+
+
+
+        /* Style the content */
+        article {
+            -webkit-flex: 3;
+            -ms-flex: 3;
+            flex: 3;
+            background-color: #ffff99;
+            padding-bottom: 800px;
+            margin-left: -100px;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+
+
+        img {
+            float: left;
+            margin-top: -1px;
+        }
+
+        .box {
+            width: auto;
+            height: auto;
+            margin: 100px;
+            padding: 100px;
+            background-color: #00004d;
+            color: white;
+            display: inline-block;
+            border-radius: 5px;
+        }
+
+        .box2 {
+            width: 450px;
+            height: 300px;
+            margin: 19px 17px;
+            background: white;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .box3 {
+            width: 450px;
+            height: 300px;
+            margin: 19px 17px;
+            background: white;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+
+
+        .button#b1 {
+            background-color: #4CAF50;
+            border-radius: 2px;
+            color: white;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 40px 2px;
+            cursor: pointer;
+            width: 10%;
+            float: right;
+        }
+
+        input[type=text], select {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+        input[type=date], select {
+            width: 30%;
+            padding: 12px 20px;
+            margin-top: 15px;
+            margin-left: 15px;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .cnt {
+            border-radius: 20px;
+            background-color: white;
+            padding: 20%;
+            margin: 20px 30px 20px 30px;
+            position:;
+        }
+
+
+
+        .container {
+            margin: 50px 100px 100px 100px;
+            width: 10px;
+            border-radius: 5px;
+            background-color: gray;
+            padding: 10%;
+            padding-right: 50%;
+            text-align: left;
+        }
+
+
+        .imagelink {
+            background: url(../../Content/images/new.jpg) no-repeat top left;
+            border-radius: 0px;
+            width: 203px;
+            height: 124px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 165%;
+            margin-left: -30%;
+            margin-top: -25%;
+            margin-bottom: 10px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <header>
+        <a href='@Url.Action("TeacherHome","User")'><img src="~/Content/images/new logo 5.jpg" style="border-radius:5px; width:203px;height:124px;"></a>
+        <b style="position:absolute;right:35px;top:20px;font-size:20px;"></b>
+
+        <a href='@Url.Action("Login","User")' class="button" id="b1">Logout</a>
+        <h4 style="text-align:left; margin-left: 300px;"> <b>Welcome To FGS</b> Management System</h4>
+    </header>
+    <section>
+        <nav>
+            <ul>
+
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('5')" class="dropbtn"> Announcements &#9660
+                    </button>
+                    <div id="myDropdown5" class="dropdown-content">
+                        @Html.ActionLink("Add Announcement", "AddAnnouncement", "Communication")
+                        @Html.ActionLink("View General Announcements", "ViewGeneralAnnouncements", "Communication")
+                    </div>
+
+                </div>
+
+
+
+                <hr />
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button onclick="myFunction('8')" class="dropbtn">Result &#9660</button>
+                    <div id="myDropdown8" class="dropdown-content">
+                        @Html.ActionLink("View Result", "ViewResultTeacher", "Result")
+                        @Html.ActionLink("Add Result", "AddResult", "Result")
+
+                    </div>
+
+                </div>
+
+
+
+                <hr />
+            </li>
+
+
+            <li>
+
+                <div class="dropdown">
+                    <button onclick="myFunction('6')" class="dropbtn">Time Table &#9660</button>
+                    <div id="myDropdown6" class="dropdown-content">
+
+                        @Html.ActionLink("View Schedule", "ViewScheduleTeacher", "Schedule")
+                    </div>
+
+                </div>
+                <hr />
+            </li>
+
+
+
+
+            <li>
+                <div class="dropdown">
+                    <button onclick="myFunction('7')" class="dropbtn">Attendance &#9660</button>
+                    <div id="myDropdown7" class="dropdown-content">
+                        @Html.ActionLink("View Attendance", "ViewAttendanceTeacher", "Attendance")
+                        @Html.ActionLink("Mark Attendance", "MarkAttendance", "Attendance")
+                    </div>
+
+                </div>
+                <hr />
+            </li>
+        </ul>
+
+    </nav>
+
+        <article ng-controller="MyCntrl">
+
+            <label style="margin-left:20px;">Date:</label>
+            <input type="text" placeholder="Date: month/day/year m/dd/yyyy" ng-model="date" />
+
+            <label for="fclass">Class</label>
+            <select id="classid" ng-model="class" name="ClassID" ></select>
+            <br />
+            <label>Student ID</label>
+            <input type="text" ng-model="studentid" />
+            <input type="hidden" id="tid" placeholder="Enter Student ID"  value="@Session["username"].ToString()" />
+
+            <div class="cnt" style="overflow-y:scroll; overflow-x: auto;">
+
+
+
+
+                <table>
+
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Student ID</th>
+                        <th>Class ID</th>
+                        <th>Section </th>
+                        <th>Date</th>
+                        <th>Attendance</th>
+
+                    </tr>
+
+                    <tr ng-repeat="x in people | filter:{Date : date} | filter:{Class.ClassID : class} | filter: {Student.StudentID : studentid}">
+                        <td>{{ x.Student.FirstName }}</td>
+                        <td>{{ x.Student.StudentID }}</td>
+                        <td>{{ x.Class.ClassID}}</td>
+                        <td>{{ x.Class.Section }}</td>
+                        <td>{{ x.Date }}</td>
+
+                        <td ng-switch="x.AttendanceValue">
+                            <span ng-switch-when="p" style="color:green">P</span>
+                            <span ng-switch-when="A" style="color:red">A</span>
+
+                        </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </table>
+
+
+
+            </div>
+
+
+
+
+
+        </article>
+    </section>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
+</body>
+</html>

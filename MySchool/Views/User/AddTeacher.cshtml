@@ -1,0 +1,423 @@
+﻿@model MySchool.Models.Teacher
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin-AddStudent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/navbar.css" type="text/css" />
+
+    <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+        function myFunction(id) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+  document.getElementById("myDropdown"+id).classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        .panel-heading {
+            font-size: 20px;
+            background-color: orangered;
+            color: white;
+            padding: 10px 15px;
+            margin: 40px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #00004d;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            text-align: left-center;
+            font-size: 32px;
+            color: white;
+        }
+        /* Container for flexboxes */
+        section {
+            display: -webkit-flex;
+            display: flex;
+        }
+
+
+
+        /* Style the content */
+        article {
+            -webkit-flex: 3;
+            -ms-flex: 3;
+            flex: 3;
+            background-color: #ffff99;
+            padding-bottom: 800px;
+            margin-left: -100px;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+        
+        .frm {
+
+            padding:100px;
+            margin:100px;
+            background-color:white;
+            max-width:60%;
+            border-radius:10px;
+        }
+
+        .container {
+            margin: 50px 100px 100px 100px;
+            width: 10px;
+            border-radius: 5px;
+            background-color: gray;
+            padding: 10%;
+            padding-right: 50%;
+            text-align: left;
+        }
+
+        input[type=date], select {
+            width: 30%;
+            padding: 12px 20px;
+            margin-top: 15px;
+            margin-left: 15px;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+        input[type=text], select {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 10%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=text]#search {
+            float: right;
+            margin-top: -41px;
+            margin-right: 1px;
+            width: 135px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 5px 10px 5px 10px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus#search {
+            width: 20%;
+        }
+
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        
+
+
+        img {
+            float: left;
+            margin-top: -1px;
+        }
+
+        .box {
+            width: 300px;
+            height: 100px;
+            margin: 19px 17px;
+            background: white;
+            display: inline-block;
+        }
+
+        
+        .text-danger{
+            color:red;
+            font-family:Verdana;
+            font-size:small;
+        }
+
+        .button#b1 {
+            background-color: #4CAF50;
+            border-radius: 2px;
+            color: white;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 40px 2px;
+            cursor: pointer;
+            width: 10%;
+            float: right;
+        }
+
+        li:hover .dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <header>
+        <a href='@Url.Action("AdminHome","User")'><img src="~/Content/images/new logo 5.jpg" style="border-radius:5px; width:203px;height:124px;"></a>
+        <b style="position:absolute;right:35px;top:20px;font-size:20px;">Admin</b>
+
+        <a href='@Url.Action("Login","User")' class="button" id="b1">Logout</a>
+        <h4 style="text-align:left; margin-left: 300px;"> <b>Welcome To FGS</b> Management System</h4>
+        <input type="text" id="search" name="search" placeholder="Search..">
+
+    </header>
+
+    <section>
+        <nav>
+            <ul>
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('1')" class="dropbtn">Students &#9660</button>
+                        <div id="myDropdown1" class="dropdown-content">
+                            @Html.ActionLink("Add Student", "AddStudent", "User")
+                            @Html.ActionLink("All Students", "ShowStudents", "User")
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <hr />
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('2')" class="dropbtn">Teachers &#9660</button>
+                        <div id="myDropdown2" class="dropdown-content">
+                            @Html.ActionLink("Add Teacher", "AddTeacher", "User")
+                            @Html.ActionLink("View Teachers", "ShowTeachers", "User")
+                        </div>
+
+                    </div>
+
+                    <hr />
+                </li>
+
+                <li>
+
+                    <div class="dropdown">
+                        <button onclick="myFunction('3')" class="dropbtn">Parents &#9660</button>
+                        <div id="myDropdown3" class="dropdown-content">
+                            @Html.ActionLink("View Parents", "ShowParents", "User")
+                        </div>
+
+                    </div>
+
+                    <hr />
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('4')" class="dropbtn">Finance &#9660</button>
+                        <div id="myDropdown4" class="dropdown-content">
+                            @Html.ActionLink("Add Due", "AddDue", "Finance")
+                            @Html.ActionLink("Show Dues", "ShowDue", "Finance")
+                            @Html.ActionLink("Add Expense", "AddExpense", "Finance")
+                            @Html.ActionLink("View Expenses", "ViewExpense", "Finance")
+                        </div>
+
+                    </div>
+
+
+                    <hr />
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('5')" class="dropbtn">Announcements &#9660</button>
+                        <div id="myDropdown5" class="dropdown-content">
+                            @Html.ActionLink("Add Announcements", "AddAnnouncementsAdmin", "Communication")
+                            @Html.ActionLink("View Announcements", "ViewAnnouncements", "Communication")
+                        </div>
+
+                    </div>
+
+
+
+                    <hr />
+                </li>
+
+                <li>
+
+                    <div class="dropdown">
+                        <button onclick="myFunction('6')" class="dropbtn">Time Table &#9660</button>
+                        <div id="myDropdown6" class="dropdown-content">
+                            @Html.ActionLink("Add Schedule", "AddSchedule", "Schedule")
+                            @Html.ActionLink("View Schedule", "ViewSchedule", "Schedule")
+                        </div>
+
+                    </div>
+                    <hr />
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction('7')" class="dropbtn">Attendance &#9660</button>
+                        <div id="myDropdown7" class="dropdown-content">
+                            @Html.ActionLink("View Attendance", "ViewAttendance", "Attendance")
+                        </div>
+
+                    </div>
+                    <hr />
+                </li>
+            </ul>
+
+        </nav>
+
+        <article>
+            <div class="panel-heading">
+                <b>Add New Teacher</b>
+            </div>
+            <div class="frm">
+                @using (Html.BeginForm("AddTeacher", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+
+                {
+                                        <!--<form role="form" action="Create" method="post">-->
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="name">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" value="@Model.Name" name="Name" placeholder="Enter Name">
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Name,"",new {@class="text-danger"})
+                    </div>
+                    <img src="~/Content/images/man.png" style="border-radius:29px; float:right;margin-right:100px; margin-top:10px; width:100px; height:100px;display:inline;" />
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" value="@Model.TeacherID"  for="teacherId">Teacher Id:</label>
+                        <div class="col-sm-10">
+                            <input type="text" pattern="^[t][0-9]+$" class="form-control" name="TeacherId" placeholder="Format 't0123'">
+                        </div>
+                        @Html.ValidationMessageFor(m => m.TeacherID, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="gender">Gender:</label>
+                        <div class="col-sm-10">
+                            <select id="gender" name="Gender">
+                                <option value="@Model.Gender">@Model.Gender</option>
+                                <option value="male"> Male </option>
+                                <option value="female"> Female </option>
+                            </select>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                    </div>
+
+                    <label for="city">City</label>
+                    <br />
+                    <select id="class" name="City">
+                        <option value="@Model.City">@Model.City</option>
+                        <option value="Lahore">Lahore</option>
+                        <option value="Karachi">Karachi</option>
+                        <option value="Islamabad">Islamabad</option>
+                        <option value="Peshawar">Peshawar</option>
+                        <option value="Faisalabad">Faisalabad</option>
+                        <option value="Rawalpindi">Rawalpindi</option>
+                        <option value="Other">Other</option>
+
+                    </select>
+                    @Html.ValidationMessage("City", "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit">Add</button>
+                        </div>
+                    </div>
+
+
+
+
+
+                }
+
+            </div>
+
+
+        </article>
+    </section>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
+</body>
+</html>
